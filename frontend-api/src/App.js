@@ -5,9 +5,16 @@ import Movie from "./Components/Movie/Movie";
 import "./App.css";
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      isClicked: false
+    };
+    
+  }
+
+  handleClick() {
+    this.setState({isClicked: !this.state.isClicked})
   }
 
   componentDidMount() {
