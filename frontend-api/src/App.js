@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Movie from "./Components/Movie/Movie";
+import Nav from "./Components/Nav/Nav";
 import "./App.css";
 
 class App extends Component {
@@ -10,22 +11,16 @@ class App extends Component {
     this.state = {
       isClicked: false
     };
-    
   }
 
   handleClick() {
-    this.setState({isClicked: !this.state.isClicked})
+    this.setState({ isClicked: !this.state.isClicked });
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    const url = "https://movie-express-custom-api.herokuapp.com/";
 
-  fetch("https://movie-express-custom-api.herokuapp.com/", {
-    method: 'GET',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-    }
-  })
+    fetch(url)
       .then(response => response.json())
       .then(response => {
         console.log(response);
@@ -34,12 +29,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
+      <>
+        <Nav />
         <main>
           <Route path="/" exact component={Home} />
           <Route
@@ -47,7 +38,7 @@ class App extends Component {
             render={routerProps => <Movie {...routerProps} {...this.state} />}
           />
         </main>
-      </div>
+      </>
     );
   }
 }
