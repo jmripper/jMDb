@@ -9,7 +9,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isClicked: false
+      isClicked: false,
+      movieList : []
     };
   }
 
@@ -23,7 +24,7 @@ class App extends Component {
     fetch(url)
       .then(response => response.json())
       .then(response => {
-        console.log(response);
+        this.setState({ movieList: response})
       });
   }
 
@@ -32,10 +33,14 @@ class App extends Component {
       <>
         <Nav />
         <main>
-          <Route path="/" exact component={Home} />
+          <Route
+            path="/"
+            exact
+            render={routerProps => <Home {...routerProps} {...this.state} />}
+          />
           <Route
             path="/:title"
-            render={routerProps => <Movie {...routerProps} {...this.state} />}
+            render={routerProps => <Movie {...routerProps} {...this.props} />}
           />
         </main>
       </>
