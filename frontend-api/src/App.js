@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Movie from "./Components/Movie/Movie";
 import Nav from "./Components/Nav/Nav";
+import Add_New from './Components/Add_New/AddNew'
 import "./App.css";
 
 class App extends Component {
@@ -10,8 +11,9 @@ class App extends Component {
     super(props);
     this.state = {
       isClicked: false,
-      movieList : []
+      movieList: []
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
@@ -24,7 +26,7 @@ class App extends Component {
     fetch(url)
       .then(response => response.json())
       .then(response => {
-        this.setState({ movieList: response})
+        this.setState({ movieList: response });
       });
   }
 
@@ -42,6 +44,10 @@ class App extends Component {
             path="/:title"
             render={routerProps => <Movie {...routerProps} {...this.props} />}
           />
+          <Route
+            path="/new_movie"
+            render={routerProps => <Add_New {...routerProps} {...this.state} />}
+          ></Route>
         </main>
       </>
     );

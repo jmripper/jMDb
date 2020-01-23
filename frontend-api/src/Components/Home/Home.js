@@ -1,11 +1,18 @@
 import React from "react";
-import './Home.css'
+import { Link } from "react-router-dom";
+import "./Home.css";
 
 const Home = ({ movieList }) => {
   console.log(movieList);
   let movies = movieList.map((eachMovie, i) => (
     <div key={i} className="movie-item">
-      <img src={eachMovie.poster} className="movie-poster" />
+      <Link to={"/movie/" + eachMovie.title}>
+        <img
+          src={eachMovie.poster}
+          alt={eachMovie.title}
+          className="movie-poster"
+        />
+      </Link>
     </div>
   ));
 

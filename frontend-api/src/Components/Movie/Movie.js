@@ -1,13 +1,15 @@
-import React from 'react';
+import React from "react";
 
-function Movie() {
-    return (
-      <>
-          <p>
-            MOVIE
-          </p>
-      </>
-    );
-  }
-  
-  export default Movie;
+const Movie = (props) => {
+  return (
+    <>
+      <div className="movie-data-container">
+        <div>
+          <h3></h3>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Movie;

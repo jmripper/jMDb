@@ -11,6 +11,8 @@
 }
 
 img.movie-poster {
-    width: 250px;
-    height: 375px;
+    max-width: 250px;
+    max-height: 375px;
+    height: 325px;
+    width: 200px;
 }
