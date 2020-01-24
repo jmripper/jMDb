@@ -11,7 +11,7 @@ class App extends Component {
     super(props);
     this.state = {
       isClicked: false,
-      movieList: []
+      movieList: [],
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -19,6 +19,7 @@ class App extends Component {
   handleClick() {
     this.setState({ isClicked: !this.state.isClicked });
   }
+
 
   async componentDidMount() {
     const url = "https://movie-express-custom-api.herokuapp.com/";
@@ -42,7 +43,7 @@ class App extends Component {
           />
           <Route
             path="/:title"
-            render={routerProps => <Movie {...routerProps} {...this.props} />}
+            render={routerProps => <Movie {...routerProps} {...this.state} />}
           />
           <Route
             path="/new_movie"

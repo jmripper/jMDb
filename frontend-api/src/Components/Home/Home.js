@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 
 const Home = ({ movieList }) => {
-  console.log(movieList);
+
   let movies = movieList.map((eachMovie, i) => (
     <div key={i} className="movie-item">
-      <Link to={"/movie/" + eachMovie.title}>
+      <Link to={{ pathname: "/movie/" + eachMovie.title, 
+      state: { eachMovie: eachMovie }}}>
         <img
           src={eachMovie.poster}
           alt={eachMovie.title}

@@ -1,5 +1,6 @@
 import React from "react";
-import './Nav.css'
+import { Link } from "react-router-dom";
+import "./Nav.css";
 
 const Nav = () => {
   return (
@@ -8,7 +9,9 @@ const Nav = () => {
         <img />
         <div className="headline">Nav Bar Menu</div>
         <div>
-          <button className="new-movie-button"></button>
+          <Link to="/new_movie">
+            <button className="new-movie-button">Add New</button>
+          </Link>
         </div>
       </nav>
     </>
