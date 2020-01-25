@@ -8,7 +8,7 @@
   border: 1px solid #535353;
   border-radius: 10px;
   font-family: "Open Sans", sans-serif;
-  padding: 15px;
+  padding: 20px 15px;
 }
 
 .movie-data-container .title-wrapper {
@@ -67,6 +67,7 @@ p.sub-text-left {
     display: block;
     height: 400px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .movie-data .movie-detail {

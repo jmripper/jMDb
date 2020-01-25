@@ -6,9 +6,10 @@ const Nav = () => {
   return (
     <>
       <nav className="nav-container">
-
-        <div className="headline">Nav Bar Menu</div>
-        <div>
+        <div className="headline-container">
+          <h2 className="headline">jMBb</h2>
+        </div>
+        <div className="button-container">
           <Link to="/new_movie">
             <button className="new-movie-button">Add New</button>
           </Link>
