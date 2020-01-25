@@ -6,7 +6,7 @@ const Nav = () => {
   return (
     <>
       <nav className="nav-container">
-        <img />
+
         <div className="headline">Nav Bar Menu</div>
         <div>
           <Link to="/new_movie">

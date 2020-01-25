@@ -1,0 +1,61 @@
+.main-movie-wrapper {
+  padding: 1rem;
+}
+
+.movie-data-container {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #535353;
+  border-radius: 10px;
+  font-family: "Open Sans", sans-serif;
+  padding: 15px;
+}
+
+.movie-data-container .title-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: inherit;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.title-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-self: center;
+  align-content: center;
+  width: 100%;
+}
+
+#title-year {
+  color: #000000;
+  font-size: 14px;
+}
+
+.title-wrapper h2 {
+  font-size: 2em;
+  line-height: 3rem;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #000000;
+}
+
+.movie-data {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movie-data .sub-data {
+  padding: 10px 0;
+  margin: 0;
+  font-weight: 300;
+}
+
+.sub-text-right {
+  padding-right: 10px;
+}
+
+.sub-text-left {
+  padding-left: 10px;
+}
