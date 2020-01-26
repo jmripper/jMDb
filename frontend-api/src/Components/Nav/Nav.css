@@ -15,7 +15,7 @@
     justify-content: flex-start;
     align-items: center;
     align-content: center;
-    padding: 1rem 1rem;
+    padding: 1rem 2rem;
 }
 
 .headline-container a {
@@ -36,9 +36,10 @@ h2.headline {
   font-family: 'Anton', sans-serif;
 }
 
-nav.button-container {
+.button-container {
     display: flex;
     flex-wrap: wrap;
+    padding: 1rem 2rem;
 }
 
 .new-movie-button {
@@ -46,7 +47,6 @@ nav.button-container {
     font-size: 16px;
     font-weight: 600;
     line-height: 120%;
-    padding-right: 20px;
     background: transparent;
     border:none;
     cursor: pointer;
@@ -54,4 +54,10 @@ nav.button-container {
 
 .new-movie-button:hover {
     text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+    .headline-container {
+        padding: 1rem 2rem;
+    }
 }

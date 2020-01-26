@@ -13,7 +13,7 @@ const Nav = () => {
         </div>
         <div className="button-container">
           <Link to="/new_movie">
-            <button className="new-movie-button">Add New</button>
+            <button className="new-movie-button">+ Add New</button>
           </Link>
         </div>
       </nav>
