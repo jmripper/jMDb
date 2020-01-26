@@ -1,17 +1,16 @@
 import React from "react";
 import "./Movie.css";
 
-const Movie = (props) => {
-  const movie = props.location.state.eachMovie;
+const Movie = props => {
+  const movie = props.location.state.movie;
   console.log(movie)
-
   const date = new Date(movie.released);
   const options = { year: "numeric", month: "long", day: "numeric" };
   options.timeZone = "UTC";
   const releaseDate = date.toLocaleDateString("en-US", options);
 
   if (movie.genre.length > 2) {
-    console.log("more then one genre")
+    console.log("more then one genre");
   }
 
   return (
@@ -63,6 +62,6 @@ const Movie = (props) => {
       </div>
     </>
   );
-}
+};
 
 export default Movie;

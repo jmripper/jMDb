@@ -2,20 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 
-const Home = ({ movieList }) => {
-  let movies = movieList.map((eachMovie, i) => (
+const Home = props => {
+  const list = props.movieList;
+  const movies = list.map((movie, i) => (
     <li key={i} className="movie-item">
-      <Link
-        to={{
-          pathname: "/movie/" + eachMovie.title,
-          state: { eachMovie: eachMovie }
-        }}
-      >
-        <img
-          src={eachMovie.poster}
-          alt={eachMovie.title}
-          className="movie-poster"
-        />
+      <Link to={{ pathname: "/movie/" + movie._id, state: { movie: movie } }}>
+        <img src={movie.poster} alt={movie.title} className="movie-poster" />
       </Link>
     </li>
   ));
