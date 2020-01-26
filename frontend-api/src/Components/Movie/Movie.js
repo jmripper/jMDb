@@ -1,9 +1,9 @@
 import React from "react";
 import "./Movie.css";
 
-function Movie(props) {
+const Movie = (props) => {
   const movie = props.location.state.eachMovie;
-  console.log(movie);
+  console.log(movie)
 
   const date = new Date(movie.released);
   const options = { year: "numeric", month: "long", day: "numeric" };

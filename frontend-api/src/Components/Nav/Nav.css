@@ -18,6 +18,10 @@
     padding: 1rem 1rem;
 }
 
+.headline-container a {
+    text-decoration: none;
+}
+
 h2.headline {
   font-size: 1.5em;
   line-height: 140%;
@@ -43,4 +47,11 @@ nav.button-container {
     font-weight: 600;
     line-height: 120%;
     padding-right: 20px;
+    background: transparent;
+    border:none;
+    cursor: pointer;
+}
+
+.new-movie-button:hover {
+    text-decoration: underline;
 }

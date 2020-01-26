@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Movie from "./Components/Movie/Movie";
 import Nav from "./Components/Nav/Nav";
-import Add_New from './Components/Add_New/AddNew'
+import Add from './Components/Add/Add'
 import "./App.css";
 
 class App extends Component {
@@ -47,7 +47,7 @@ class App extends Component {
           />
           <Route
             path="/new_movie"
-            render={routerProps => <Add_New {...routerProps} {...this.state} />}
+            render={routerProps => <Add {...routerProps} {...this.state} />}
           ></Route>
         </main>
       </>

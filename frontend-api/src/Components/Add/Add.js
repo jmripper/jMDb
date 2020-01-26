@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddNew = () => {
+const Add = (props) => {
   return (
     <>
       <form>
@@ -10,4 +10,4 @@ const AddNew = () => {
   );
 };
 
-export default AddNew;
+export default Add;

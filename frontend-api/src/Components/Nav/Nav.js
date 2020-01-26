@@ -7,7 +7,9 @@ const Nav = () => {
     <>
       <nav className="nav-container">
         <div className="headline-container">
+          <Link to="/">
           <h2 className="headline">jMBb</h2>
+          </Link>
         </div>
         <div className="button-container">
           <Link to="/new_movie">
