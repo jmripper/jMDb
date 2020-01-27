@@ -70,10 +70,11 @@ p.sub-text-left {
   height: 400px;
   margin: 0 auto;
   max-width: 270px;
+  width: 100%;
 }
 
 .movie-data .movie-detail {
-  padding: 20px 0 0;
+  padding: 0;
 }
 
 .movie-info {
@@ -87,6 +88,24 @@ p.sub-text-left {
 
 .bold {
   font-weight: 900;
+}
+
+.bottom-btn-container {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-evenly;
+  max-width: 50%;
+  margin: 1.5rem auto 2rem;
+  align-items: center;
+}
+
+.bottom-btn {
+  background-color: rgb(76, 97, 212);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  color: #ffffff;
+  font-size: 16px;
 }
 
 @media screen and (min-width: 880px) {

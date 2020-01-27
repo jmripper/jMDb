@@ -112,6 +112,7 @@ class Add extends Component {
                 type="date"
                 name="released"
                 placeholder=""
+                required
                 value={released}
                 onChange={this.handleChange}
               />
@@ -120,6 +121,7 @@ class Add extends Component {
                 type="text"
                 name="rated"
                 placeholder="PG-13"
+                required
                 value={rated}
                 onChange={this.handleChange}
               />
@@ -143,6 +145,7 @@ class Add extends Component {
               <textarea
                 name="poster"
                 rows="2"
+                required
                 placeholder="https://images-na.ssl-images-amazon.com/images/I/51pFF7a2j%2BL._AC_.jpg"
                 value={poster}
                 onChange={this.handleChange}

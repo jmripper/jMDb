@@ -59,6 +59,9 @@ const Movie = props => {
             </div>
           </div>
         </div>
+        <div className="bottom-btn-container">
+          <button className="bottom-btn">Update Movie</button><button className="bottom-btn">Delete Movie</button>
+        </div>
       </div>
     </>
   );
