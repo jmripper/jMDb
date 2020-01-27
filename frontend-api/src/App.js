@@ -4,25 +4,25 @@ import axios from "axios";
 import Home from "./Components/Home/Home";
 import Movie from "./Components/Movie/Movie";
 import Nav from "./Components/Nav/Nav";
-import Add from './Components/Add/Add'
+import Add from "./Components/Add/Add";
+import Update from "./Components/Update/Update"
 import "./App.css";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movieList: [],
-    }
+      movieList: []
+    };
   }
 
   async componentDidMount() {
     const url = "https://movie-express-custom-api.herokuapp.com/";
 
-    axios.get(url)
-      .then(response => {
-        const movieList = response.data;
-        this.setState({ movieList });
-      });
+    axios.get(url).then(response => {
+      const movieList = response.data;
+      this.setState({ movieList });
+    });
   }
 
   render() {
@@ -31,19 +31,23 @@ class App extends Component {
         <Nav />
         <main>
           <Switch>
-          <Route
-            path="/"
-            exact
-            render={props => <Home {...props} {...this.state} />}
-          />
-          <Route
-            path="/movie/:id"
-            render={props => <Movie {...props} {...this.state} />}
-          />
-          <Route
-            path="/new_movie"
-            render={props => <Add {...props} {...this.state} />}
-          ></Route>
+            <Route
+              path="/"
+              exact
+              render={props => <Home {...props} {...this.state} />}
+            />
+            <Route
+              path="/movie/:id"
+              render={props => <Movie {...props} {...this.state} />}
+            />
+            <Route
+              path="/new_movie"
+              render={props => <Add {...props} {...this.state} />}
+            />
+            <Route
+              path="/update"
+              render={props => <Update {...props} {...this.state} />}
+            />
           </Switch>
         </main>
       </>
