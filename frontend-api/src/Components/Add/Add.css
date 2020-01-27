@@ -71,3 +71,13 @@ h3 {
     background-color: #300453;
     border: 5px solid #300453;
 }
+
+.create-form textarea {
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 15px;
+}

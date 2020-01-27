@@ -1,25 +1,26 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "./Add.css";
 
 class Add extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      genre: ["Drama", "Thriller", "Comedy", "Romance"],
+      genre: "",
       actors: "",
       title: "",
       year: "2020",
-      rated: "R",
+      rated: "",
       released: "",
       director: "",
       plot: "",
       poster: ""
     };
-    this.submitHandler = this.submitHandler.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  submitHandler(evt) {
+  handleSubmit(evt) {
     evt.preventDefault();
     const url = "https://movie-express-custom-api.herokuapp.com/create";
 
@@ -79,59 +80,59 @@ class Add extends Component {
           <h3>Add A New Movie:</h3>
           <div className="form-container">
             <form className="create-form" onSubmit={this.submitHandler}>
-                  <label htmlFor="title">Title:</label>
-                  <input
-                    type="text"
-                    name="title"
-                    placeholder="Movie Title"
-                    value={title}
-                    onChange={this.handleChange}
-                  />
-                  <label htmlFor="year">Year:</label>
-                  <input
-                    type="text"
-                    name="year"
-                    placeholder="Year"
-                    value={year}
-                    onChange={this.handleChange}
-                  />
-                  <label htmlFor="released">Release Date:</label>
-                  <input
-                    type="date"
-                    name="release"
-                    placeholder=""
-                    value={released}
-                    onChange={this.handleChange}
-                  />
-                <label htmlFor="rated">Rated:</label>
-                <input
-                  type="text"
-                  name="rated"
-                  placeholder="PG-13"
-                  value={rated}
-                  onChange={this.handleChange}
-                />
+              <label htmlFor="title">Title:</label>
+              <input
+                type="text"
+                name="title"
+                placeholder="Harry Potter and the Goblet of Fire"
+                value={title}
+                onChange={this.handleChange}
+              />
+              <label htmlFor="year">Year:</label>
+              <input
+                type="text"
+                name="year"
+                placeholder="2005"
+                value={year}
+                onChange={this.handleChange}
+              />
+              <label htmlFor="released">Release Date:</label>
+              <input
+                type="date"
+                name="released"
+                placeholder=""
+                value={released}
+                onChange={this.handleChange}
+              />
+              <label htmlFor="rated">Rated:</label>
+              <input
+                type="text"
+                name="rated"
+                placeholder="PG-13"
+                value={rated}
+                onChange={this.handleChange}
+              />
               <label htmlFor="director">Director:</label>
               <input
                 type="text"
                 name="director"
-                placeholder="Director"
+                placeholder="Mike Newell"
                 value={director}
                 onChange={this.handleChange}
               />
               <label htmlFor="plot">Plot:</label>
-              <input
-                type="text"
+              <textarea
                 name="plot"
-                placeholder="Plot"
+                rows="5"
+                placeholder="Harry Potter (Daniel Radcliffe) finds himself competing in a hazardous tournament between rival schools of magic, but he is distracted by recurring nightmares."
                 value={plot}
                 onChange={this.handleChange}
               />
               <label htmlFor="poster">Poster:</label>
-              <input
-                type="text"
+              <textarea
                 name="poster"
-                placeholder="poster"
+                rows="2"
+                placeholder="https://images-na.ssl-images-amazon.com/images/I/51pFF7a2j%2BL._AC_.jpg"
                 value={poster}
                 onChange={this.handleChange}
               />
@@ -139,22 +140,23 @@ class Add extends Component {
               <input
                 type="text"
                 name="genre"
-                placeholder="genre"
+                placeholder="Adventure, Family, Fantasy, Mystery"
                 value={genre}
                 onChange={this.handleChange}
               />
               <label htmlFor="actors">Actors:</label>
-              <input
-                type="text"
+              <textarea
                 name="actors"
-                placeholder="actors"
+                rows="2"
+                placeholder="Daniel Radcliffe, Emma Watson, Rupert Grant, Tom Felton"
                 value={actors}
                 onChange={this.handleChange}
               />
               <input
-                className="submit-button" 
-                type="submit" 
-                value="Create New Movie" />
+                className="submit-button"
+                type="submit"
+                value="Create New Movie"
+              />
             </form>
           </div>
         </div>

@@ -4,7 +4,6 @@ import "./Home.css";
 
 const Home = props => {
   const list = props.movieList;
-  console.log(list)
   const movies = list.map((movie, i) => (
     <li key={i} className="movie-item">
       <Link to={{ pathname: "/movie/" + movie._id, state: { movie: movie } }}>
