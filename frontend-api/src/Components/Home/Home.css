@@ -7,7 +7,7 @@
 .list-container > ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 1.2rem;
+  grid-gap: 2.2rem;
 }
 
 .list-container > ul > li.movie-item {
