@@ -22,19 +22,23 @@ class Add extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    const url = "https://movie-express-custom-api.herokuapp.com/create";
-
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        genre: [this.state.genre],
-        writer: ["Unknown"],
-        actors: [this.state.actors],
-        language: ["English"],
-        country: ["USA"],
+    
+  axios.post("https://movie-express-custom-api.herokuapp.com/create", {
+        genre: [
+          this.state.genre
+        ],
+        writer: [
+          "Unknown"
+        ],
+        actors: [
+          this.state.actors
+        ],
+        language: [
+          "English"
+        ],
+        country: [
+          "USA"
+        ],
         title: this.state.title,
         year: this.state.year,
         rated: this.state.rated,
@@ -54,7 +58,12 @@ class Add extends Component {
         website: "N/A",
         response: true
       })
-    });
+      .then(response => {
+        console.log(response);
+        console.log(response.data);
+        alert("movie was created!")
+      })
+      .catch(err => console.log(err));
   }
 
   handleChange(evt) {
@@ -79,13 +88,14 @@ class Add extends Component {
         <div className="form-wrapper">
           <h3>Add A New Movie:</h3>
           <div className="form-container">
-            <form className="create-form" onSubmit={this.submitHandler}>
+            <form className="create-form" onSubmit={this.handleSubmit}>
               <label htmlFor="title">Title:</label>
               <input
                 type="text"
                 name="title"
                 placeholder="Harry Potter and the Goblet of Fire"
                 value={title}
+                required
                 onChange={this.handleChange}
               />
               <label htmlFor="year">Year:</label>
@@ -94,6 +104,7 @@ class Add extends Component {
                 name="year"
                 placeholder="2005"
                 value={year}
+                required
                 onChange={this.handleChange}
               />
               <label htmlFor="released">Release Date:</label>
