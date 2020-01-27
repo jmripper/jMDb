@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
+import axios from "axios";
 import Home from "./Components/Home/Home";
 import Movie from "./Components/Movie/Movie";
 import Nav from "./Components/Nav/Nav";
@@ -17,10 +18,10 @@ class App extends Component {
   async componentDidMount() {
     const url = "https://movie-express-custom-api.herokuapp.com/";
 
-    fetch(url)
-      .then(response => response.json())
+    axios.get(url)
       .then(response => {
-        this.setState({ movieList: response });
+        const movieList = response.data;
+        this.setState({ movieList });
       });
   }
 

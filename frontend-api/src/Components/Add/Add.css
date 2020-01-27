@@ -20,7 +20,7 @@
 
 .create-form input {
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     padding: 5px;
 }
 
@@ -53,7 +53,7 @@ h3 {
 
 .create-form .submit-button {
     background-color: #6504b5;
-    margin: 15px auto;
+    margin: 15px auto 0;
     border: 2px solid #6504b5;
     width: 80%;
     padding: 15px;
