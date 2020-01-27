@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Movie.css";
 
 const Movie = props => {
@@ -60,7 +61,7 @@ const Movie = props => {
           </div>
         </div>
         <div className="bottom-btn-container">
-          <button className="bottom-btn">Update Movie</button><button className="bottom-btn">Delete Movie</button>
+          <Link to="/update" ><button className="bottom-btn">Update Movie</button></Link><button className="bottom-btn">Delete Movie</button>
         </div>
       </div>
     </>
