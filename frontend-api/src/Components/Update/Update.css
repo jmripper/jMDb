@@ -47,3 +47,12 @@ form.update-form {
     text-align: center;
     box-shadow: 0 1px 3px rgba(77,71,81,.2);
 }
+
+.confirm-message {
+    margin: 1rem auto;
+
+}
+
+.update-container h3 {
+    margin-top: 1rem;
+}

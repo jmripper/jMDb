@@ -8,6 +8,7 @@ class Update extends Component {
     this.state = {
       year: "",
       rated: "",
+      message: "",
       movie: props.location.state.movie
     };
     this.handleChange = this.handleChange.bind(this);
@@ -23,7 +24,8 @@ class Update extends Component {
     evt.preventDefault();
     const url =
       "https://movie-express-custom-api.herokuapp.com/update/" +
-      this.props.params.match._id;
+      this.props.match.params.id;
+
     axios
       .put(url, {
         year: this.state.year,
@@ -32,13 +34,14 @@ class Update extends Component {
       .then(response => {
         console.log(response);
         console.log(response.data);
-        alert("movie was updated!");
+        this.setState({ message: "Movie updated!"})
       })
       .catch(err => console.log(err));
   }
 
   render() {
     const { year, rated, movie } = this.state;
+    console.log(this.props.match.params.id)
     return (
       <>
         <div className="update-container">
@@ -64,6 +67,7 @@ class Update extends Component {
             />
             <input className="submit-button" type="submit" value="Update" />
           </form>
+          <div className="confirm-message">{this.state.message}</div>
         </div>
       </>
     );
