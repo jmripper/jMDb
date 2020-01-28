@@ -110,7 +110,7 @@ p.sub-text-left {
   cursor: pointer;
 }
 
-@media screen and (min-width: 880px) {
+@media screen and (min-width: 940px) {
   .movie-data-container {
     margin: 2.5em auto;
     padding: 2em;
