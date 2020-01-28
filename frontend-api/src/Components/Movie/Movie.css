@@ -106,6 +106,8 @@ p.sub-text-left {
   padding: 10px 15px;
   color: #ffffff;
   font-size: 16px;
+  outline: none;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 880px) {

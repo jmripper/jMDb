@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 import axios from "axios";
 import Home from "./Components/Home/Home";
 import Movie from "./Components/Movie/Movie";
 import Nav from "./Components/Nav/Nav";
 import Add from "./Components/Add/Add";
-import Update from "./Components/Update/Update"
+import Update from "./Components/Update/Update";
+import Delete from "./Components/Delete/Delete";
 import "./App.css";
 
 class App extends Component {
@@ -30,7 +31,6 @@ class App extends Component {
       <>
         <Nav />
         <main>
-          <Switch>
             <Route
               path="/"
               exact
@@ -45,10 +45,13 @@ class App extends Component {
               render={props => <Add {...props} {...this.state} />}
             />
             <Route
-              path="/update"
+              path="/update/:id"
               render={props => <Update {...props} {...this.state} />}
             />
-          </Switch>
+            <Route
+              path="/remove/:id"
+              render={props => <Delete {...props} {...this.state} />}
+            />
         </main>
       </>
     );

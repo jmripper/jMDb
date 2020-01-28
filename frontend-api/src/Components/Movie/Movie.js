@@ -4,7 +4,7 @@ import "./Movie.css";
 
 const Movie = props => {
   const movie = props.location.state.movie;
-  console.log(movie)
+  console.log(movie);
   const date = new Date(movie.released);
   const options = { year: "numeric", month: "long", day: "numeric" };
   options.timeZone = "UTC";
@@ -61,7 +61,16 @@ const Movie = props => {
           </div>
         </div>
         <div className="bottom-btn-container">
-          <Link to="/update" ><button className="bottom-btn">Update Movie</button></Link><button className="bottom-btn">Delete Movie</button>
+          <Link
+            to={{ pathname: "/update/" + movie._id, state: { movie: movie } }}
+          >
+            <button className="bottom-btn">Update Movie</button>
+          </Link>
+          <Link
+            to={{ pathname: "/remove/" + movie._id, state: { movie: movie } }}
+          >
+            <button className="bottom-btn">Delete Movie</button>
+          </Link>
         </div>
       </div>
     </>
