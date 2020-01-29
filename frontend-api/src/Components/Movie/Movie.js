@@ -6,45 +6,46 @@ import "./Movie.css";
 class Movie extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      movie: []
+    };
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
-  async delete() {
-    await axios.delete(`https://movie-express-custom-api.herokuapp.com/delete/${this.props.match.params.id}`)
-    this.setState({movieList: ''})
-    this.props.history.push("/")
+componentDidMount() {
+    const url = "https://movie-express-custom-api.herokuapp.com/movie/" + this.props.match.params.id;
+
+    axios.get(url)
+      .then(res => {
+        this.setState({ movie: res.data[0]})
+    });
   }
 
-  // handleDelete = () => {
-  //   const url =
-  //     "https://movie-express-custom-api.herokuapp.com/delete/" +
-  //     this.props.match.params.id;
-
-  //   axios.delete(url).then(response => {
-  //     const movieList = response.data;
-  //     this.setState({ movieList: '' });
-  //     this.props.history.push("/");
-  //   });
-  // }
+handleDelete(evt,id) {
+    // evt.preventDefault()
+    // const movie = this.state.movie.filter( item => item.id !== id );
+    axios.delete(
+        "https://movie-express-custom-api.herokuapp.com/delete/" + this.props.match.params.id
+      )
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          movie: []
+        });
+        this.props.history.push("/");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   render() {
-    const movie = this.props.location.state.movie;
+    const { movie } = this.state
 
     const date = new Date(movie.released);
     const options = { year: "numeric", month: "long", day: "numeric" };
     options.timeZone = "UTC";
     const releaseDate = date.toLocaleDateString("en-US", options);
-
-    // handleDelete = () => {
-    //   const url =
-    //     "https://movie-express-custom-api.herokuapp.com/delete/" +
-    //     props.match.params.id;
-
-    //   axios.delete(url, movieList).then(response => {
-    //     const movieList = response.data;
-    //     this.setState({ movieList: movieList });
-    //   });
-    // };
 
     return (
       <>
@@ -52,7 +53,7 @@ class Movie extends Component {
           <div className="movie-data-container">
             <div className="title-wrapper">
               <div className="title-block">
-                <h2>{movie.title}</h2>
+                <h2>{this.state.movie.title}</h2>
               </div>
               <div className="title-sub-data">
                 <p className="sub-text-right">{movie.year}</p>|
@@ -82,7 +83,7 @@ class Movie extends Component {
                 </p>
                 <p className="movie-info">
                   <span className="bold">Release Date:</span> {releaseDate}
-                </p>
+                 </p>
                 <p className="movie-info">
                   <span className="bold">Production:</span> {movie.production}
                 </p>
@@ -98,13 +99,13 @@ class Movie extends Component {
           </div>
           <div className="bottom-btn-container">
             <Link
-              to={{ pathname: "/update/" + movie._id, state: { movie: movie } }}
+              to={{ pathname: "/update/" + movie._id }}
             >
               <button className="bottom-btn">Update Movie</button>
             </Link>
-            <Link to="/">
-              <button className="bottom-btn" onClick={(evt) => {this.handleDelete(evt)}}>Delete Movie</button>
-            </Link>
+              <button className="bottom-btn" onClick={this.handleDelete}>
+                Delete Movie
+              </button>
           </div>
         </div>
       </>
