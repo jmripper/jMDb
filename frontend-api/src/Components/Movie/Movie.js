@@ -1,80 +1,115 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "./Movie.css";
 
-const Movie = props => {
-  const movie = props.location.state.movie;
-  console.log(movie);
-  const date = new Date(movie.released);
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  options.timeZone = "UTC";
-  const releaseDate = date.toLocaleDateString("en-US", options);
-
-  if (movie.genre.length > 2) {
-    console.log("more then one genre");
+class Movie extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
   }
 
-  return (
-    <>
-      <div className="main-movie-wrapper">
-        <div className="movie-data-container">
-          <div className="title-wrapper">
-            <div className="title-block">
-              <h2>{movie.title}</h2>
+  async delete() {
+    await axios.delete(`https://movie-express-custom-api.herokuapp.com/delete/${this.props.match.params.id}`)
+    this.setState({movieList: ''})
+    this.props.history.push("/")
+  }
+
+  // handleDelete = () => {
+  //   const url =
+  //     "https://movie-express-custom-api.herokuapp.com/delete/" +
+  //     this.props.match.params.id;
+
+  //   axios.delete(url).then(response => {
+  //     const movieList = response.data;
+  //     this.setState({ movieList: '' });
+  //     this.props.history.push("/");
+  //   });
+  // }
+
+  render() {
+    const movie = this.props.location.state.movie;
+
+    const date = new Date(movie.released);
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    options.timeZone = "UTC";
+    const releaseDate = date.toLocaleDateString("en-US", options);
+
+    // handleDelete = () => {
+    //   const url =
+    //     "https://movie-express-custom-api.herokuapp.com/delete/" +
+    //     props.match.params.id;
+
+    //   axios.delete(url, movieList).then(response => {
+    //     const movieList = response.data;
+    //     this.setState({ movieList: movieList });
+    //   });
+    // };
+
+    return (
+      <>
+        <div className="main-movie-wrapper">
+          <div className="movie-data-container">
+            <div className="title-wrapper">
+              <div className="title-block">
+                <h2>{movie.title}</h2>
+              </div>
+              <div className="title-sub-data">
+                <p className="sub-text-right">{movie.year}</p>|
+                <p className="sub-text-right sub-text-left">{movie.rated}</p>|
+                <p className="sub-text-right sub-text-left">{movie.runtime}</p>
+              </div>
             </div>
-            <div className="title-sub-data">
-              <p className="sub-text-right">{movie.year}</p>|
-              <p className="sub-text-right sub-text-left">{movie.rated}</p>|
-              <p className="sub-text-right sub-text-left">{movie.runtime}</p>
+            <div className="movie-data">
+              <img
+                src={movie.poster}
+                className="movie-image"
+                alt={movie.title}
+              />
+              <div className="movie-detail">
+                <p className="movie-info">{movie.plot}</p>
+                <p className="movie-info">
+                  <span className="bold">Director:</span> {movie.director}
+                </p>
+                <p className="movie-info">
+                  <span className="bold">Actors:</span> {movie.actors}
+                </p>
+                <p className="movie-info">
+                  <span className="bold">Genre:</span> {movie.genre}
+                </p>
+                <p className="movie-info">
+                  <span className="bold">Writers:</span> {movie.writer}
+                </p>
+                <p className="movie-info">
+                  <span className="bold">Release Date:</span> {releaseDate}
+                </p>
+                <p className="movie-info">
+                  <span className="bold">Production:</span> {movie.production}
+                </p>
+                <p className="movie-info">
+                  <span className="bold">imdbRating:</span> {movie.imdbRating}
+                </p>
+                <p className="movie-info-last">
+                  <span className="bold">Country:</span> {movie.country}
+                </p>
+                <p></p>
+              </div>
             </div>
           </div>
-          <div className="movie-data">
-            <img src={movie.poster} className="movie-image" alt={movie.title} />
-            <div className="movie-detail">
-              <p className="movie-info">{movie.plot}</p>
-              <p className="movie-info">
-                <span className="bold">Director:</span> {movie.director}
-              </p>
-              <p className="movie-info">
-                <span className="bold">Actors:</span> {movie.actors}
-              </p>
-              <p className="movie-info">
-                <span className="bold">Genre:</span> {movie.genre}
-              </p>
-              <p className="movie-info">
-                <span className="bold">Writers:</span> {movie.writer}
-              </p>
-              <p className="movie-info">
-                <span className="bold">Release Date:</span> {releaseDate}
-              </p>
-              <p className="movie-info">
-                <span className="bold">Production:</span> {movie.production}
-              </p>
-              <p className="movie-info">
-                <span className="bold">imdbRating:</span> {movie.imdbRating}
-              </p>
-              <p className="movie-info-last">
-                <span className="bold">Country:</span> {movie.country}
-              </p>
-              <p></p>
-            </div>
+          <div className="bottom-btn-container">
+            <Link
+              to={{ pathname: "/update/" + movie._id, state: { movie: movie } }}
+            >
+              <button className="bottom-btn">Update Movie</button>
+            </Link>
+            <Link to="/">
+              <button className="bottom-btn" onClick={(evt) => {this.handleDelete(evt)}}>Delete Movie</button>
+            </Link>
           </div>
         </div>
-        <div className="bottom-btn-container">
-          <Link
-            to={{ pathname: "/update/" + movie._id, state: { movie: movie } }}
-          >
-            <button className="bottom-btn">Update Movie</button>
-          </Link>
-          <Link
-            to={{ pathname: "/remove/" + movie._id, state: { movie: movie } }}
-          >
-            <button className="bottom-btn">Delete Movie</button>
-          </Link>
-        </div>
-      </div>
-    </>
-  );
-};
+      </>
+    );
+  }
+}
 
 export default Movie;

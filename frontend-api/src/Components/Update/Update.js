@@ -34,14 +34,13 @@ class Update extends Component {
       .then(response => {
         console.log(response);
         console.log(response.data);
-        this.setState({ message: "Movie updated!"})
+        this.setState({ message: "Movie updated!" });
       })
       .catch(err => console.log(err));
   }
 
   render() {
     const { year, rated, movie } = this.state;
-    console.log(this.props.match.params.id)
     return (
       <>
         <div className="update-container">
@@ -68,6 +67,9 @@ class Update extends Component {
             <input className="submit-button" type="submit" value="Update" />
           </form>
           <div className="confirm-message">{this.state.message}</div>
+        </div>
+        <div className="update-btn-container">
+          <button>View Updates</button>
         </div>
       </>
     );
