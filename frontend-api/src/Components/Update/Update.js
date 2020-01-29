@@ -68,9 +68,6 @@ class Update extends Component {
           </form>
           <div className="confirm-message">{this.state.message}</div>
         </div>
-        <div className="update-btn-container">
-          <button>View Updates</button>
-        </div>
       </>
     );
   }
