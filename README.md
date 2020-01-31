@@ -8,3 +8,4 @@ This MERN, full-stack application a JSON API which can be found <a href="https:/
 ## Deployed Website:
 Deployed using AWS Amplify, https://master.d17c6pxzujr60l.amplifyapp.com/
 
+<img src="/jmdb.png" width="400px" height="600px">
