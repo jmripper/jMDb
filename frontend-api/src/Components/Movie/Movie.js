@@ -21,7 +21,7 @@ componentDidMount() {
     });
   }
 
-handleDelete(evt,id) {
+handleDelete() {
     // evt.preventDefault()
     // const movie = this.state.movie.filter( item => item.id !== id );
     axios.delete(
@@ -99,7 +99,7 @@ handleDelete(evt,id) {
           </div>
           <div className="bottom-btn-container">
             <Link
-              to={{ pathname: "/update/" + movie._id }}
+              to={{ pathname: "/update/" + movie._id, state: {movie: movie} }}
             >
               <button className="bottom-btn">Update Movie</button>
             </Link>

@@ -9,7 +9,7 @@ class Update extends Component {
       year: "",
       rated: "",
       message: "",
-      movie: props.location.state.movie
+      
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,11 +40,11 @@ class Update extends Component {
   }
 
   render() {
-    const { year, rated, movie } = this.state;
+    const { year, rated } = this.state;
     return (
       <>
         <div className="update-container">
-          <h3>Update {movie.title}'s Information:</h3>
+          <h3>Update Information:</h3>
           <form className="update-form" onSubmit={this.handleSubmit}>
             <label htmlFor="year">Year:</label>
             <input
