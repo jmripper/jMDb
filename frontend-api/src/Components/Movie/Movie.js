@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Delete from '../Delete/Delete'
+import Delete from "../Delete/Delete";
 import axios from "axios";
 import "./Movie.css";
 
@@ -10,27 +10,25 @@ class Movie extends Component {
     this.state = {
       movie: []
     };
-    // this.handleDelete = this.handleDelete.bind(this);
   }
 
-componentDidMount() {
-    const url = "https://movie-express-custom-api.herokuapp.com/movie/" + this.props.match.params.id;
+  componentDidMount() {
+    const url =
+      "https://movie-express-custom-api.herokuapp.com/movie/" +
+      this.props.match.params.id;
 
-    axios.get(url)
-      .then(res => {
-        this.setState({ movie: res.data[0]})
+    axios.get(url).then(res => {
+      this.setState({ movie: res.data[0] });
     });
   }
 
   render() {
-    const { movie } = this.state
-    console.log(movie)
+    const { movie } = this.state;
 
     const date = new Date(this.state.movie.released);
     const options = { year: "numeric", month: "long", day: "numeric" };
     options.timeZone = "UTC";
     const releaseDate = date.toLocaleDateString("en-US", options);
-    
 
     return (
       <>
@@ -68,7 +66,7 @@ componentDidMount() {
                 </p>
                 <p className="movie-info">
                   <span className="bold">Release Date:</span> {releaseDate}
-                  </p>
+                </p>
                 <p className="movie-info">
                   <span className="bold">Production:</span> {movie.production}
                 </p>
@@ -84,13 +82,17 @@ componentDidMount() {
           </div>
           <div className="bottom-btn-container">
             <Link
-              to={{ pathname: "/update/" + movie._id, state: {movie: movie} }}
+              to={{ pathname: "/update/" + movie._id, state: { movie: movie } }}
             >
               <button className="bottom-btn">Update Movie</button>
             </Link>
-              <Delete className="bottom-btn" getData={this.props.getData} id={movie._id}></Delete>
-           </div> 
-         </div> 
+            <Delete
+              className="bottom-btn"
+              getData={this.props.getData}
+              id={movie._id}
+            ></Delete>
+          </div>
+        </div>
       </>
     );
   }

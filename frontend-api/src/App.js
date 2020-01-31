@@ -30,7 +30,6 @@ export class App extends Component {
   };
 
   render() {
-    console.log(this.getData);
     return (
       <>
         <Nav />
@@ -44,7 +43,9 @@ export class App extends Component {
           />
           <Route
             path="/movie/:id"
-            render={props => <Movie {...props} {...this.state} getData={this.getData} />}
+            render={props => (
+              <Movie {...props} {...this.state} getData={this.getData} />
+            )}
           />
           <Route
             path="/new_movie"
@@ -52,7 +53,9 @@ export class App extends Component {
           />
           <Route
             path="/update/:id"
-            render={props => <Update getData={this.getData} {...this.state} {...props} />}
+            render={props => (
+              <Update getData={this.getData} {...this.state} {...props} />
+            )}
           />
         </main>
       </>
