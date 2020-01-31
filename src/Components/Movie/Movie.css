@@ -48,13 +48,13 @@
 p.sub-text-right {
   padding-right: 5px;
   display: inline-block;
-  margin: 10px auto 20px;
+  margin: 10px auto 10px;
 }
 
 p.sub-text-left {
   padding-left: 5px;
   display: inline-block;
-  margin: 10px auto 20px;
+  margin: 10px auto 10px;
 }
 
 .movie-data {
@@ -94,8 +94,7 @@ p.sub-text-left {
   display: flex;
   flex-flow: wrap;
   justify-content: space-evenly;
-  max-width: 50%;
-  margin: 1.5rem auto 2rem;
+  margin: 1rem auto 2rem;
   align-items: center;
 }
 
@@ -103,7 +102,7 @@ p.sub-text-left {
   background-color: rgb(76, 97, 212);
   border: none;
   border-radius: 5px;
-  padding: 10px 15px;
+  padding: 15px 25px;
   color: #ffffff;
   font-size: 16px;
   outline: none;
@@ -116,7 +115,7 @@ p.sub-text-left {
 
 @media screen and (min-width: 940px) {
   .movie-data-container {
-    margin: 2.5em auto;
+    margin: 1.5em auto;
     padding: 2em;
   }
   .movie-data img.movie-image {
@@ -130,6 +129,10 @@ p.sub-text-left {
     padding: 10px 0;
   }
   .title-wrapper h2 {
-    font-size: 2em;
+    font-size: 2.4em;
   }
+  .bottom-btn-container {
+    max-width: 50%;
+  }
+  
 }
