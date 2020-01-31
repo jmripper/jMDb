@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Delete from '../Delete/Delete'
 import axios from "axios";
 import "./Movie.css";
 
@@ -9,7 +10,7 @@ class Movie extends Component {
     this.state = {
       movie: []
     };
-    this.handleDelete = this.handleDelete.bind(this);
+    // this.handleDelete = this.handleDelete.bind(this);
   }
 
 componentDidMount() {
@@ -21,31 +22,15 @@ componentDidMount() {
     });
   }
 
-handleDelete() {
-    // evt.preventDefault()
-    // const movie = this.state.movie.filter( item => item.id !== id );
-    axios.delete(
-        "https://movie-express-custom-api.herokuapp.com/delete/" + this.props.match.params.id
-      )
-      .then(res => {
-        console.log(res.data);
-        this.setState({
-          movie: []
-        });
-        this.props.history.push("/");
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
-
   render() {
     const { movie } = this.state
+    console.log(movie)
 
-    const date = new Date(movie.released);
+    const date = new Date(this.state.movie.released);
     const options = { year: "numeric", month: "long", day: "numeric" };
     options.timeZone = "UTC";
     const releaseDate = date.toLocaleDateString("en-US", options);
+    
 
     return (
       <>
@@ -53,7 +38,7 @@ handleDelete() {
           <div className="movie-data-container">
             <div className="title-wrapper">
               <div className="title-block">
-                <h2>{this.state.movie.title}</h2>
+                <h2>{movie.title}</h2>
               </div>
               <div className="title-sub-data">
                 <p className="sub-text-right">{movie.year}</p>|
@@ -83,7 +68,7 @@ handleDelete() {
                 </p>
                 <p className="movie-info">
                   <span className="bold">Release Date:</span> {releaseDate}
-                 </p>
+                  </p>
                 <p className="movie-info">
                   <span className="bold">Production:</span> {movie.production}
                 </p>
@@ -103,11 +88,9 @@ handleDelete() {
             >
               <button className="bottom-btn">Update Movie</button>
             </Link>
-              <button className="bottom-btn" onClick={this.handleDelete}>
-                Delete Movie
-              </button>
-          </div>
-        </div>
+              <Delete className="bottom-btn" getData={this.props.getData} id={movie._id}></Delete>
+           </div> 
+         </div> 
       </>
     );
   }

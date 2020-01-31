@@ -1,0 +1,10 @@
+.bottom-btn {
+    background-color: rgb(76, 97, 212);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    color: #ffffff;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+  }

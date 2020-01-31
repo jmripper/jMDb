@@ -8,8 +8,7 @@ class Update extends Component {
     this.state = {
       year: "",
       rated: "",
-      message: "",
-      
+      message: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,7 +24,6 @@ class Update extends Component {
     const url =
       "https://movie-express-custom-api.herokuapp.com/update/" +
       this.props.match.params.id;
-
     axios
       .put(url, {
         year: this.state.year,
@@ -34,6 +32,7 @@ class Update extends Component {
       .then(response => {
         console.log(response);
         console.log(response.data);
+        this.props.getData();
         this.setState({ message: "Movie updated!" });
       })
       .catch(err => console.log(err));

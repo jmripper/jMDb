@@ -17,32 +17,47 @@ export class App extends Component {
     this.getData = this.getData.bind(this);
   }
 
-componentDidMount() {
-  this.getData()
-}
+  componentDidMount() {
+    this.getData();
+  }
 
-getData = () => {
+  getData = () => {
     const url = "https://movie-express-custom-api.herokuapp.com/";
 
     axios.get(url).then(res => {
       this.setState({ movieList: res.data });
     });
-  }
+  };
 
-  render(){
-    console.log(this.getData)
-  return (
-    <>
-      <Nav />
-      <main>
-        <Route path="/" exact render={props => <Home getData={this.getData}  {...props} {...this.state} />} />
-        <Route path="/movie/:id" render={props => <Movie {...props} />} />
-        <Route path="/new_movie" render={props => <Add {...props} {...this.state} />} />
-        <Route path="/update/:id" render={props => <Update getData={this.getData} {...props} />} />
-      </main>
-    </>
-  );
-};
-};
+  render() {
+    console.log(this.getData);
+    return (
+      <>
+        <Nav />
+        <main>
+          <Route
+            path="/"
+            exact
+            render={props => (
+              <Home getData={this.getData} {...props} {...this.state} />
+            )}
+          />
+          <Route
+            path="/movie/:id"
+            render={props => <Movie {...props} {...this.state} getData={this.getData} />}
+          />
+          <Route
+            path="/new_movie"
+            render={props => <Add {...props} {...this.state} />}
+          />
+          <Route
+            path="/update/:id"
+            render={props => <Update getData={this.getData} {...this.state} {...props} />}
+          />
+        </main>
+      </>
+    );
+  }
+}
 
 export default App;
