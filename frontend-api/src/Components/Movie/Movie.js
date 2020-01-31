@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Delete from "../Delete/Delete";
 import axios from "axios";
+import star from "./iconfinder_star_285661.svg";
 import "./Movie.css";
 
 class Movie extends Component {
@@ -20,6 +21,32 @@ class Movie extends Component {
     axios.get(url).then(res => {
       this.setState({ movie: res.data[0] });
     });
+  }
+
+  stars() {
+    if (this.state.movie.imdbRating >= 8) {
+      return (
+        <>
+          <img src={star} alt={star} className="star-icon" />
+          <img src={star} alt={star} className="star-icon" />
+          <img src={star} alt={star} className="star-icon" />
+        </>
+      );
+    }
+    if (this.state.movie.imdbRating >= 5) {
+      return (
+        <>
+          <img src={star} alt={star} className="star-icon" />
+          <img src={star} alt={star} className="star-icon" />
+        </>
+      );
+    } else {
+      return (
+        <>
+          <img src={star} alt={star} className="star-icon" />
+        </>
+      );
+    }
   }
 
   render() {
@@ -71,10 +98,12 @@ class Movie extends Component {
                   <span className="bold">Production:</span> {movie.production}
                 </p>
                 <p className="movie-info">
-                  <span className="bold">imdbRating:</span> {movie.imdbRating}
+                  <span className="bold">imdbRating:&nbsp;</span>
+                  {this.stars()}&nbsp;{movie.imdbRating}
                 </p>
                 <p className="movie-info-last">
-                  <span className="bold">Country:</span> {movie.country}
+                  <span className="bold">Country/Countries:</span>{" "}
+                  {movie.country}
                 </p>
                 <p></p>
               </div>

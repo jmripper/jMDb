@@ -110,6 +110,10 @@ p.sub-text-left {
   cursor: pointer;
 }
 
+.star-icon {
+  vertical-align: bottom;
+}
+
 @media screen and (min-width: 940px) {
   .movie-data-container {
     margin: 2.5em auto;
