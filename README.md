@@ -4,3 +4,7 @@ This MERN, full-stack application a JSON API which can be found <a href="https:/
 ## Languages Used
 - React.js
 - CSS
+
+## Deployed Website:
+Deployed using AWS Amplify, https://master.d17c6pxzujr60l.amplifyapp.com/
+
