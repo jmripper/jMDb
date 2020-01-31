@@ -1,6 +1,6 @@
 .list-container {
   padding: 2rem;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -23,7 +23,7 @@
 }
 
 
-.movie-item img.movie-poster {
+.list-container > ul > li > a > img.movie-poster {
   max-width: 250px;
   max-height: 375px;
   height: 325px;
