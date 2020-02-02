@@ -99,7 +99,7 @@ p.sub-text-left {
 }
 
 .bottom-btn {
-  background-color: rgb(76, 97, 212);
+  background-color: #4c61d4;
   border: none;
   border-radius: 5px;
   padding: 15px 25px;
@@ -107,6 +107,11 @@ p.sub-text-left {
   font-size: 16px;
   outline: none;
   cursor: pointer;
+}
+
+.bottom-btn:hover {
+  background-color: #192EA1;
+  font-weight: 600;
 }
 
 .star-icon {
