@@ -6,6 +6,6 @@ This MERN, full-stack application a JSON API which can be found <a href="https:/
 - CSS
 
 ## Deployed Website:
-Deployed using AWS Amplify, https://master.d17c6pxzujr60l.amplifyapp.com/
+Deployed using AWS Amplify, https://jmdb.netlify.com/
 
 <img src="src/jmdb.png" width="100%" height="500px">
