@@ -7,12 +7,21 @@ import Add from "./Components/Add/Add";
 import Update from "./Components/Update/Update";
 import "./App.css";
 import axios from "axios";
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
+
+const override = css`
+  display: block;
+  margin: 1em auto;
+  border-color: #000000;
+`;
 
 export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movieList: []
+      movieList: [],
+      loading: true
     };
     this.getData = this.getData.bind(this);
   }
@@ -25,41 +34,56 @@ export class App extends Component {
     const url = "https://movie-express-custom-api.herokuapp.com/";
 
     axios.get(url).then(res => {
-      this.setState({ movieList: res.data });
+      this.setState({ movieList: res.data, loading: false });
     });
   };
 
   render() {
-    return (
-      <>
-        <Nav />
-        <main>
-          <Route
-            path="/"
-            exact
-            render={props => (
-              <Home getData={this.getData} {...props} {...this.state} />
-            )}
+    if (this.state.loading === true) {
+      return (
+        <>
+          <Nav />
+          <ClipLoader
+            css={override}
+            sizeUnit={"px"}
+            size={50}
+            color={"#123abc"}
+            loading={this.state.loading}
           />
-          <Route
-            path="/movie/:id"
-            render={props => (
-              <Movie {...props} {...this.state} getData={this.getData} />
-            )}
-          />
-          <Route
-            path="/new_movie"
-            render={props => <Add {...props} {...this.state} />}
-          />
-          <Route
-            path="/update/:id"
-            render={props => (
-              <Update getData={this.getData} {...this.state} {...props} />
-            )}
-          />
-        </main>
-      </>
-    );
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Nav />
+          <main>
+            <Route
+              path="/"
+              exact
+              render={props => (
+                <Home getData={this.getData} {...props} {...this.state} />
+              )}
+            />
+            <Route
+              path="/movie/:id"
+              render={props => (
+                <Movie {...props} {...this.state} getData={this.getData} />
+              )}
+            />
+            <Route
+              path="/new_movie"
+              render={props => <Add {...props} {...this.state} />}
+            />
+            <Route
+              path="/update/:id"
+              render={props => (
+                <Update getData={this.getData} {...this.state} {...props} />
+              )}
+            />
+          </main>
+        </>
+      );
+    }
   }
 }
 
