@@ -47,7 +47,7 @@ export class App extends Component {
             css={override}
             sizeUnit={"px"}
             size={50}
-            color={"#123abc"}
+            color={"#000000"}
             loading={this.state.loading}
           />
         </>
